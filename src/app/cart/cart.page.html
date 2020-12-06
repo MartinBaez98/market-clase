@@ -1,0 +1,55 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Carrito
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-list-header>
+            <ion-label><strong>Productos</strong> </ion-label>
+        </ion-list-header>
+
+        <ion-item-group *ngIf="cart">
+            <ion-item-divider>
+                <ion-label>En Carrito</ion-label>
+
+            </ion-item-divider>
+
+            <ion-item lines="none" *ngFor="let item of CanYProd; index as i; ">
+                <ion-chip>
+                    <ion-label>{{item.c}}</ion-label>
+                </ion-chip>
+                <ion-label>{{ item.p.name }}</ion-label>
+                <ion-badge color="secondary">{{ item.p.price | currency}}</ion-badge>
+                <ion-button size="small" color="danger" (click)="showAlert(i)">
+                    <ion-icon name="trash" color="light"></ion-icon>
+                </ion-button>
+            </ion-item>
+
+            <ion-item-divider>
+                <ion-label>Resumen</ion-label>
+            </ion-item-divider>
+
+            <ion-item lines="none">
+                <ion-label>Subtotal</ion-label>
+                <ion-badge color="primary">{{ cart.subtotal | currency}}</ion-badge>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label>IVA</ion-label>
+                <ion-badge color="primary">{{ cart.iva | currency}}</ion-badge>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label>Total</ion-label>
+                <ion-badge color="warning">{{ cart.total | currency}}</ion-badge>
+            </ion-item>
+
+        </ion-item-group>
+
+    </ion-list>
+</ion-content>

@@ -1,0 +1,88 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+          Nuevo Producto
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed>
+    <form [formGroup]="myForm">
+    <ion-row>
+      <ion-col size="12" size-lg="3">
+        <ion-item>
+          <ion-label position="floating">Name</ion-label>
+          <ion-input type="text" formControlName="name"></ion-input>
+          <div *ngIf="(myForm.controls.name.dirty || myForm.controls.name.touched)">
+            <div class="validation-errors">
+              <ng-container *ngFor="let validation of validationMessages.name">
+
+                  <div class="error-msg" *ngIf="myForm.get('name').hasError(validation.type) && (myForm.get('name').dirty || myForm.get('name').touched)">
+                      <ion-icon name="alert-circle-outline"></ion-icon> {{ validation.message }}
+                  </div>
+              </ng-container>
+          </div>
+          </div>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" size-lg="3">
+        <ion-item>
+          <ion-label position="floating">Description</ion-label>
+          <ion-input type="text" formControlName="description"></ion-input>
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validationMessages.description">
+
+                <div class="error-msg" *ngIf="myForm.get('description').hasError(validation.type) && (myForm.get('description').dirty || myForm.get('description').touched)">
+                    <ion-icon name="alert-circle-outline"></ion-icon> {{ validation.message }}
+                </div>
+            </ng-container>
+        </div>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" size-lg="3">
+        <ion-item>
+          <ion-label position="floating">Poto</ion-label>
+          <ion-input type="text" formControlName="photo"></ion-input>
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validationMessages.photo">
+
+                <div class="error-msg" *ngIf="myForm.get('photo').hasError(validation.type) && (myForm.get('photo').dirty || myForm.get('photo').touched)">
+                    <ion-icon name="alert-circle-outline"></ion-icon> {{ validation.message }}
+                </div>
+            </ng-container>
+        </div>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" size-lg="3">
+        <ion-item>
+          <ion-label position="floating">Price</ion-label>
+          <ion-input type="number" formControlName="price"></ion-input>
+        </ion-item>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validationMessages.price">
+
+              <div class="error-msg" *ngIf="myForm.get('price').hasError(validation.type) && (myForm.get('price').dirty || myForm.get('price').touched)">
+                  <ion-icon name="alert-circle-outline"></ion-icon> {{ validation.message }}
+              </div>
+          </ng-container>
+      </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" size-lg="3">
+        <ion-button type="button" (click)=create() size="large">Guardar</ion-button>
+      </ion-col>
+    </ion-row>
+    </form>
+  </ion-grid>
+</ion-content>
